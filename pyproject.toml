@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]   # for PEP 639 licence expressions
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sphinx-svdoc"
+version = "0.1.0"
+description = "Module documentation from SystemVerilog source, as a Sphinx extension"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Martin Priestley", email = "martin.priestley@2dphotonics.com" }]
+dependencies = ["pyslang>=12"]
+
+[project.optional-dependencies]
+sphinx = ["sphinx>=7"]
+test = ["pytest", "sphinx>=7"]
+docs = ["sphinx>=7"]
+
+[project.scripts]
+sphinx-svdoc = "sphinx_svdoc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sphinx_svdoc = ["static/*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
